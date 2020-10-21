@@ -1,9 +1,6 @@
 name: Build and Release Waypoint Plugin
 
-on:
-  push:
-    tags: v*
-    branches: [ main ]
+on: [ push, pull_request ]
 
 jobs:
 
