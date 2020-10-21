@@ -50,6 +50,8 @@ jobs:
 
   upload_assets:
 
+    if: contains(github.ref, 'v')
+    runs-on: ubuntu-latest
     needs: create_release
 
     strategy:
