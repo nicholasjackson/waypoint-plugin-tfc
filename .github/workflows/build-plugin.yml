@@ -18,7 +18,7 @@ jobs:
       run: make build-docker
 
     - name: Create Release
-      if: ${{ contains(github.ref, "v") }}
+      #if: ${{ contains(github.ref, "v") }}
       id: create_release
       uses: actions/create-release@v1
       env:
@@ -28,3 +28,8 @@ jobs:
         release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
+    - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: plugin-binaries
+          path: releases
