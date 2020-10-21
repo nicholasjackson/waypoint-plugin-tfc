@@ -18,7 +18,7 @@ jobs:
       run: make build-docker
 
     - name: Create Release
-      if: contains(github.ref, "v")
+      if: ${{ contains(github.ref, "v") }}
       id: create_release
       uses: actions/create-release@v1
       env:
