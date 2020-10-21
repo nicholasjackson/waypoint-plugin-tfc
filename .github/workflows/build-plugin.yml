@@ -49,13 +49,14 @@ jobs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
 
   upload_assets:
-    
+  
     needs: create_release
 
     strategy:
       matrix:
         arch: [darwin_amd64, linux_amd64, windows_386, windows_amd64]
-
+  
+    steps:
     - name: Upload Release Asset ${{ matrix.arch }}
       id: upload-release-asset-${{ matrix.arch }}
       uses: actions/upload-release-asset@v1
