@@ -49,7 +49,7 @@ jobs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
 
   upload_assets:
-  
+
     needs: create_release
 
     strategy:
