@@ -29,10 +29,6 @@ jobs:
     needs: build
 
     steps:
-    - name: Download built plugin binaries
-      uses: actions/download-artifact@v2
-      with:
-        name: plugin-binaries
     
     - name: Create Release
       id: create_release
@@ -59,6 +55,12 @@ jobs:
         os: [darwin_amd64, linux_amd64, windows_386, windows_amd64]
   
     steps:
+    
+    - name: Download built plugin binaries
+      uses: actions/download-artifact@v2
+      with:
+        name: plugin-binaries
+
     - name: Upload Release Asset ${{ matrix.os }}
       uses: actions/upload-release-asset@v1
       env:
