@@ -56,16 +56,16 @@ jobs:
 
     strategy:
       matrix:
-        arch: [darwin_amd64, linux_amd64, windows_386, windows_amd64]
+        os: [darwin_amd64, linux_amd64, windows_386, windows_amd64]
   
     steps:
-    - name: Upload Release Asset ${{ matrix.arch }}
-      id: upload-release-asset-${{ matrix.arch }}
+    - name: Upload Release Asset ${{ matrix.os }}
+      id: upload-release-asset-${{ matrix.os }}
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ needs.create_release.outputs.upload_url }} 
-        asset_path: ./waypoint-plugin-template_${{ matrix.arch }}.zip
-        asset_name: waypoint-plugin-template_${{ matrix.arch }}.zip
+        asset_path: ./waypoint-plugin-template_${{ matrix.os }}.zip
+        asset_name: waypoint-plugin-template_${{ matrix.os }}.zip
         asset_content_type: application/zip
